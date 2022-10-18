@@ -22,7 +22,7 @@ const multer = Multer({
 });
 const authenticateGoogle = () => {
     const auth = new google.auth.GoogleAuth({
-        keyFile: `${__dirname}/melodic-courier-364110-34110ebb710a.json`,
+        keyFile: `${__dirname}/keys/melodic-courier-364110-34110ebb710a.json`,
         scopes: "https://www.googleapis.com/auth/drive",
     });
     return auth;

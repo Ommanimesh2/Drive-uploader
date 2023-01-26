@@ -3,11 +3,12 @@ import { useState } from 'react'
 const GoogleDriveFileUploader = () => {
     const [url, setUrl] = useState("");
     const [file, setFile] = useState(null);
+  
     const handleSubmit = async (e) => {
       e.preventDefault();
       let formData = new FormData();
       formData.append("file", file.data);
-      const response = await fetch("http://localhost:8000/upload-file", {
+      const response = await fetch("http://localhost:8000/api/users/uploadDrive", {
         method: "POST",
         body: formData,
       });
@@ -15,7 +16,6 @@ const GoogleDriveFileUploader = () => {
       const responseWithBody = await response.json();
       if (response) setUrl(responseWithBody.publicUrl);
     };
-  
     const handleFileChange = (e) => {
       const file = {
         preview: URL.createObjectURL(e.target.files[0]),
